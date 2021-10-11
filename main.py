@@ -21,7 +21,7 @@ num_episodes = 10000
 def main():
 
     s_2_idx = None
-    env_choice = env_opt[3]
+    env_choice = env_opt[3] # Change this to change the env
     if env_choice == 'frozenLake':
         env = FrozenLakeEnv(desc=None, map_name="4x4", is_slippery=True)
         Q = np.zeros((env.nS, env.nA))
