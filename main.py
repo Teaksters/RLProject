@@ -5,12 +5,13 @@ from Policies.policy import EpsilonGreedyPolicy
 from Envs.frozen_lake import FrozenLakeEnv
 from Envs.blackjack import BlackjackEnv
 from Envs.cliffwalking import CliffWalkingEnv
+from Envs.taxi import TaxiEnv
 
 import helpers
 
 
 # Standard variables
-env_opt = ['frozenLake', 'blackJack', 'cliffWalking']
+env_opt = ['frozenLake', 'blackJack', 'cliffWalking', 'taxi']
 env = 0
 policy = 0
 epsilon = 0.1
@@ -20,7 +21,7 @@ num_episodes = 10000
 def main():
 
     s_2_idx = None
-    env_choice = env_opt[2]
+    env_choice = env_opt[3]
     if env_choice == 'frozenLake':
         env = FrozenLakeEnv(desc=None, map_name="4x4", is_slippery=True)
         Q = np.zeros((env.nS, env.nA))
@@ -37,6 +38,13 @@ def main():
 
     if env_choice == 'cliffWalking':
         env = CliffWalkingEnv()
+        Q = np.zeros((env.nS, env.nA))
+        policy = EpsilonGreedyPolicy(Q, epsilon, env.nA)
+        print('The generated map:')
+        env.render()
+
+    if env_choice == 'taxi':
+        env = TaxiEnv()
         Q = np.zeros((env.nS, env.nA))
         policy = EpsilonGreedyPolicy(Q, epsilon, env.nA)
         print('The generated map:')
