@@ -37,7 +37,6 @@ def q_learning(env, policy, Q, num_episodes, discount_factor=1.0, alpha=0.5):
         while done == False:
             a = policy.sample_action(s)
             s2, r, done, _ = env.step(a)
-            print(r)
             Q[s][a] += alpha * (r + discount_factor * max(Q[s2]) - Q[s][a])
             s = s2
 
