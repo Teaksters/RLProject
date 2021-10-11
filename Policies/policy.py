@@ -5,9 +5,11 @@ class EpsilonGreedyPolicy(object):
     """
     A simple epsilon greedy policy.
     """
-    def __init__(self, Q, epsilon):
+    def __init__(self, Q, epsilon, nA, s_2_idx=None):
         self.Q = Q
         self.epsilon = epsilon
+        self.nA = nA
+        self.s_2_idx = s_2_idx
 
     def sample_action(self, obs):
         """
@@ -21,7 +23,10 @@ class EpsilonGreedyPolicy(object):
         """
         x = random.random()
         if x > self.epsilon:
-            action = np.argmax(self.Q[obs])
-        else: action = random.randint(0, 3)
+            if self.s_2_idx == None:
+                action = np.argmax(self.Q[obs])
+            else:
+                action = np.argmax(self.Q[self.s_2_idx[obs]])
+        else: action = random.randint(0, self.nA - 1)
 
         return action
