@@ -1,6 +1,7 @@
 import numpy as np
 
 from Algorithms.Qlearner import q_learning
+from Algorithms.double_Q import double_q_learning
 from Policies.policy import EpsilonGreedyPolicy
 from Envs.frozen_lake import FrozenLakeEnv
 from Envs.blackjack import BlackjackEnv
@@ -50,7 +51,7 @@ def main():
         print('The generated map:')
         env.render()
 
-    Q, results = q_learning(env, policy, Q, num_episodes, s_2_idx,
+    Q, results = double_Q(env, policy, Q, num_episodes, s_2_idx,
                             discount_factor=0.9, alpha=0.5)
     print(Q)
 
