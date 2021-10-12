@@ -4,7 +4,7 @@ def tqdm(*args, **kwargs):
     return _tqdm(*args, **kwargs, mininterval=1)  # Safety, do not overflow buffer
 
 
-def q_learning(env, policy, Q, num_episodes, s_2_idx, discount_factor=1.0, alpha=0.5):
+def douwble_q_learning(env, policy, Q, num_episodes, s_2_idx, discount_factor=1.0, alpha=0.5):
     """
     Q-Learning algorithm: Off-policy TD control. Finds the optimal greedy policy
     while following an epsilon-greedy policy
@@ -38,12 +38,12 @@ def q_learning(env, policy, Q, num_episodes, s_2_idx, discount_factor=1.0, alpha
             a = policy.sample_action(s)
             s2, r, done, _ = env.step(a)
             if s_2_idx != None: # For blackJack
-                if np.random.choice([0, 1], 1) = 1:
+                if np.random.choice([0, 1], 1) == 1:
                     Q1[s_2_idx[s]][a] += alpha * (r + discount_factor * Q2[argmax(Q1[s_2_idx[s2]])[a] - Q1[s_2_idx[s]][a])
                 else:
                     Q2[s_2_idx[s]][a] += alpha * (r + discount_factor * Q1[argmax(Q2[s_2_idx[s2]])[a] - Q2[s_2_idx[s]][a])
             else: # For others
-                if np.random.choice([0, 1], 1) = 1:
+                if np.random.choice([0, 1], 1) == 1:
                     Q1[s][a] += alpha * (r + discount_factor * Q2[s2][argmax(Q1[s2])] - Q1[s][a])
                 else:
                     Q2[s][a] += alpha * (r + discount_factor * Q1[s2][argmax(Q2[s2])] - Q2[s][a])
