@@ -1,3 +1,4 @@
+# import numpy
 import numpy as np
 
 from Algorithms.Qlearner import q_learning
@@ -51,9 +52,9 @@ def main():
         print('The generated map:')
         env.render()
 
-    Q, results = double_Q(env, policy, Q, num_episodes, s_2_idx,
+    Q1, Q2, results = double_q_learning(env, policy, Q, num_episodes, s_2_idx,
                             discount_factor=0.9, alpha=0.5)
-    print(Q)
+    print(Q1, Q2)
 
 
 
