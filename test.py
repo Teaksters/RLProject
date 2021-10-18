@@ -1,6 +1,8 @@
 import main
+
 import numpy as np
 import matplotlib.pyplot as plt
+import pickle
 
 all_r = []
 for i in range(10):
@@ -9,6 +11,10 @@ for i in range(10):
     all_r.append(res)
 
 mean_res = np.mean(all_r, axis=0)
+pickle.dump(mean_res, open( "save.p", "wb" ))
+
+mean_res = pickle.load( open( "save.p", "rb" ) )
+
 x = np.arange(mean_res.shape[0])
 plt.plot(x, mean_res)
 plt.show()
