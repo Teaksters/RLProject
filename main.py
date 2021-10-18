@@ -15,11 +15,9 @@ import helpers
 # Standard variables
 env_opt = ['frozenLake', 'blackJack', 'cliffWalking', 'taxi']
 policy = 0
-epsilon = 0.01
-num_episodes = 500000
 
 
-def main(env=0, q=True, dq=False):
+def main(env=0, num_episodes=50000, epsilon=0.05, q=True, dq=False):
 
     s_2_idx = None
     env_choice = env_opt[env] # Change this to change the env
