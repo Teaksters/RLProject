@@ -20,7 +20,7 @@ epsilon = 0.1
 num_episodes = 10000
 
 
-def main():
+def main(q=True, dq=False):
 
     s_2_idx = None
     env_choice = env_opt[3] # Change this to change the env
@@ -52,12 +52,19 @@ def main():
         print('The generated map:')
         env.render()
 
-    Q1, Q2, results = double_q_learning(env, policy, Q, num_episodes, s_2_idx,
-                            discount_factor=0.9, alpha=0.5)
-    print(Q1, Q2)
-    Q, results = q_learning(env, policy, Q, num_episodes, s_2_idx,
-                            discount_factor=0.9, alpha=0.5)
-    print(Q)
+    # Decide which algorithm to run
+    if dq:
+        Q1, Q2, dq_results = double_q_learning(env, policy, Q, num_episodes, s_2_idx,
+                                discount_factor=0.9, alpha=0.5)
+    if q:
+        Q, q_results = q_learning(env, policy, Q, num_episodes, s_2_idx,
+                                discount_factor=0.9, alpha=0.5)
+    if q and dq:
+        return Q, q_results, Q1, Q2, dq_results
+    elif q:
+        return Q, q_results
+    elif dq:
+        return Q1, Q2, dq_results
 
 
 
