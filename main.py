@@ -14,16 +14,15 @@ import helpers
 
 # Standard variables
 env_opt = ['frozenLake', 'blackJack', 'cliffWalking', 'taxi']
-env = 0
 policy = 0
 epsilon = 0.01
 num_episodes = 500000
 
 
-def main(q=True, dq=False):
+def main(env=0, q=True, dq=False):
 
     s_2_idx = None
-    env_choice = env_opt[0] # Change this to change the env
+    env_choice = env_opt[env] # Change this to change the env
     if env_choice == 'frozenLake':
         env = FrozenLakeEnv(desc=None, map_name="4x4", is_slippery=True)
         Q = np.zeros((env.nS, env.nA))
