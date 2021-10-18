@@ -5,12 +5,13 @@ import matplotlib.pyplot as plt
 import pickle
 
 pName = "save.p"
-N = 50
+N = 5
 episodes = 300000
 all_r = np.zeros([episodes])
 for i in range(N):
-    _, (len, res) = main.main(env=0, num_episodes=episodes, epsilon=0.05,
-                       q=True, dq=False)
+    _, (len, res) = main.main(env=0, num_episodes=episodes, epsilon=0.05, q=True, dq=False)
+    # _, _, (len, res) = main.main(env=0, num_episodes=episodes, epsilon=0.05, q=False, dq=True)
+    # _, (len, res), _, _, (len, res) = main.main(env=0, num_episodes=episodes, epsilon=0.05, q=True, dq=True)
     all_r += res
 
 mean_res = all_r / N

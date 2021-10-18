@@ -1,12 +1,13 @@
 from tqdm import tqdm as _tqdm
 # import numpy
 import numpy as np
+import random
 
 def tqdm(*args, **kwargs):
     return _tqdm(*args, **kwargs, mininterval=1)  # Safety, do not overflow buffer
 
 
-def double_q_learning(env, policy, Q, num_episodes, s_2_idx, discount_factor=1.0, alpha=0.5):
+def double_q_learning(env, policy1, policy2, Q1, Q2, num_episodes, s_2_idx, discount_factor=1.0, alpha=0.5):
     """
     Q-Learning algorithm: Off-policy TD control. Finds the optimal greedy policy
     while following an epsilon-greedy policy
@@ -25,8 +26,6 @@ def double_q_learning(env, policy, Q, num_episodes, s_2_idx, discount_factor=1.0
 
     # Keeps track of useful statistics
     stats = []
-    Q1 = Q
-    Q2 = Q
 
     for i_episode in tqdm(range(num_episodes)):
         i = 0
@@ -37,7 +36,18 @@ def double_q_learning(env, policy, Q, num_episodes, s_2_idx, discount_factor=1.0
 
         done = False
         while done == False:
-            a = policy.sample_action(s)
+            # Sample from mean epsilon greedy policies
+            action_value1 = policy1.sample_action(s, True)
+            action_value2 = policy2.sample_action(s, True)
+            mean_action_value = action_value1 + action_value2
+
+            x = random.random()
+            if x > policy1.epsilon:
+                a = np.argmax(mean_action_value)
+            else:
+                a = random.randint(0, policy1.nA - 1)
+
+
             s2, r, done, _ = env.step(a)
             if s_2_idx != None: # For blackJack
                 if np.random.choice([0, 1], 1) == 1:
