@@ -19,6 +19,6 @@ module load Anaconda3/2018.12
 cd $HOME/
 # Activate your environment
 
-source activate rlcourse
+conda activate rlcourse
 # Run your code
 srun python -u RLProject/test.py
