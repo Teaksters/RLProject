@@ -16,14 +16,14 @@ import helpers
 env_opt = ['frozenLake', 'blackJack', 'cliffWalking', 'taxi']
 env = 0
 policy = 0
-epsilon = 0.1
-num_episodes = 10000
+epsilon = 0.01
+num_episodes = 500000
 
 
 def main():
 
     s_2_idx = None
-    env_choice = env_opt[3] # Change this to change the env
+    env_choice = env_opt[0] # Change this to change the env
     if env_choice == 'frozenLake':
         env = FrozenLakeEnv(desc=None, map_name="4x4", is_slippery=True)
         Q = np.zeros((env.nS, env.nA))
@@ -52,12 +52,15 @@ def main():
         print('The generated map:')
         env.render()
 
-    Q1, Q2, results = double_q_learning(env, policy, Q, num_episodes, s_2_idx,
-                            discount_factor=0.9, alpha=0.5)
-    print(Q1, Q2)
+    # Q1, Q2, results = double_q_learning(env, policy, Q, num_episodes, s_2_idx,
+    #                         discount_factor=0.9, alpha=0.5)
+    # print(Q1, Q2)
     Q, results = q_learning(env, policy, Q, num_episodes, s_2_idx,
                             discount_factor=0.9, alpha=0.5)
-    print(Q)
+    print("Q", Q)
+    print("results", results)
+    helpers.result_plot_forzen_lake(results[0], results[1])
+
 
 
 
