@@ -55,7 +55,9 @@ def main():
     Q1, Q2, results = double_q_learning(env, policy, Q, num_episodes, s_2_idx,
                             discount_factor=0.9, alpha=0.5)
     print(Q1, Q2)
-
+    Q, results = q_learning(env, policy, Q, num_episodes, s_2_idx,
+                            discount_factor=0.9, alpha=0.5)
+    print(Q)
 
 
 
