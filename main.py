@@ -16,13 +16,12 @@ import helpers
 env_opt = ['frozenLake', 'blackJack', 'cliffWalking', 'taxi']
 policy = 0
 
-
-def main(env=0, num_episodes=50000, epsilon=0.05, q=True, dq=False):
+def main(env=0, num_episodes=50000, epsilon=0.05, q=True, dq=False, size=4, p=0.8):
 
     s_2_idx = None
     env_choice = env_opt[env] # Change this to change the env
     if env_choice == 'frozenLake':
-        env = FrozenLakeEnv(desc=None, map_name=None, is_slippery=True)
+        env = FrozenLakeEnv(desc=None, map_name=None, is_slippery=True, size=size, p=p)
         Q = np.zeros((env.nS, env.nA))
         Q2 = np.zeros((env.nS, env.nA))
         policy = EpsilonGreedyPolicy(Q, epsilon, env.nA)

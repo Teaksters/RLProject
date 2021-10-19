@@ -92,9 +92,9 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
 
     metadata = {"render.modes": ["human", "ansi"]}
 
-    def __init__(self, desc=None, map_name="4x4", is_slippery=True):
+    def __init__(self, desc=None, map_name="4x4", is_slippery=True, size=4, p=0.8):
         if desc is None and map_name is None:
-            desc = generate_random_map()
+            desc = generate_random_map(size, p)
         elif desc is None:
             desc = MAPS[map_name]
         self.desc = desc = np.asarray(desc, dtype="c")
