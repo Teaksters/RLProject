@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
-pName = "Q_test_frozen_lake_50N.p"
+pName = "Q_test_frozen_lake_50N_random.p"
 # pName = "Q_test_cliff_walking.p"
 N = 50
 episodes = 500000
