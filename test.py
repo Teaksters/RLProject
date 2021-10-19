@@ -4,10 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
-pName = "Q_test_frozen_lake_50N.p"
+pName = "Q_test_frozen_lake_5N_8x8.p"
 # pName = "Q_test_cliff_walking.p"
-N = 50
-episodes = 500000
+N = 1
+episodes = 1000000
 all_r = np.zeros([episodes])
 all_r_dq = np.zeros([episodes])
 for i in range(N):
