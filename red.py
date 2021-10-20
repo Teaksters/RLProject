@@ -3,10 +3,10 @@ import pickle
 
 # Config A
 pName       = ""
-N           = 10
-episodes    = 500000
+N           = 50
+episodes    = 5000
 size        = 4
-p           = 0.7
+p           = 0.95
 
 pName = "FrozenLake_slippery_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_p" + str(int(p * 10)) + ".p"
 pName = "FrozenLake_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_p" + str(int(p * 10)) + ".p"
