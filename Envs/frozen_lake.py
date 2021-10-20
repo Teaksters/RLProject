@@ -100,7 +100,7 @@ def generate_random_map_new(size, number_holes):
         for i in range(number_holes):
             x_index = random.randint(0, size - 1)
             y_index = random.randint(0, size - 1)
-            while (x_index == 0 and y_index == 0) or (x_index == size - 1 and y_index == size - 1):
+            while (x_index == 0 and y_index == 0) or (x_index == size - 1 and y_index == size - 1) or res[x_index][y_index] == "H":
                 x_index = random.randint(0, size - 1)
                 y_index = random.randint(0, size - 1)
             res[x_index][y_index] = "H"
