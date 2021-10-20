@@ -8,7 +8,7 @@ episodes    = 500000
 size        = 4
 p           = 0.9
 
-pName = "FrozenLake_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_p" + str(int(p * 10)) + ".p"
+pName = "FrozenLake_slippery_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_p" + str(int(p * 10)) + ".p"
 
 mean_res, mean_res_dq = run_experiment_func(pName, N, episodes, size, p)
 pickle.dump(mean_res, open("pickle_files/" + pName, "wb" ))
@@ -22,10 +22,10 @@ print("***************")
 pName       = ""
 N           = 10
 episodes    = 500000
-size        = 8
+size        = 4
 p           = 0.8
 
-pName = "FrozenLake_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_p" + str(int(p * 10)) + ".p"
+pName = "FrozenLake_slippery_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_p" + str(int(p * 10)) + ".p"
 
 mean_res, mean_res_dq = run_experiment_func(pName, N, episodes, size, p)
 pickle.dump(mean_res, open("pickle_files/" + pName, "wb" ))
