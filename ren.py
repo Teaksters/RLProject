@@ -22,8 +22,8 @@ import pickle
 pName       = ""
 N           = 10
 episodes    = 500000
-size        = 5
-p           = 0.9
+size        = 4
+p           = 0.8
 
 pName = "FrozenLake_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_p" + str(int(p * 10)) + ".p"
 
