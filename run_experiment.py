@@ -5,14 +5,14 @@ import matplotlib.pyplot as plt
 import pickle
 
 
-def run_experiment_func(pName, N, episodes, size, p):
+def run_experiment_func(pName, N, episodes, size, number_holes):
     pName = "Q_test_frozen_lake_50N_random.p"
 
     all_r = np.zeros([episodes])
     all_r_dq = np.zeros([episodes])
 
     for i in range(N):
-        _, (len, res), _, _, (len_dq, res_dq) = main.main(env=0, num_episodes=episodes, epsilon=0.05, q=True, dq=True, size=size, p=p)
+        _, (len, res), _, _, (len_dq, res_dq) = main.main(env=0, num_episodes=episodes, epsilon=0.05, q=True, dq=True, size=size, number_holes=number_holes)
         all_r += res
         all_r_dq += res_dq
 

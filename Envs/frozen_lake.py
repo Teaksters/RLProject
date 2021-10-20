@@ -7,6 +7,8 @@ from io import StringIO
 from gym import utils
 from gym.envs.toy_text import discrete
 
+import random
+
 LEFT = 0
 DOWN = 1
 RIGHT = 2
@@ -66,6 +68,46 @@ def generate_random_map(size=4, p=0.8):
         valid = is_valid(res)
     return ["".join(x) for x in res]
 
+def generate_random_map_new(size, number_holes):
+    """Generates a random valid map (one that has a path from start to goal)
+    :param size: size of each side of the grid
+    :param p: probability that a tile is frozen
+    """
+    valid = False
+
+    # DFS to check that it's a valid path.
+    def is_valid(res):
+        frontier, discovered = [], set()
+        frontier.append((0, 0))
+        while frontier:
+            r, c = frontier.pop()
+            if not (r, c) in discovered:
+                discovered.add((r, c))
+                directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+                for x, y in directions:
+                    r_new = r + x
+                    c_new = c + y
+                    if r_new < 0 or r_new >= size or c_new < 0 or c_new >= size:
+                        continue
+                    if res[r_new][c_new] == "G":
+                        return True
+                    if res[r_new][c_new] != "H":
+                        frontier.append((r_new, c_new))
+        return False
+
+    while not valid:
+        res = np.full((size, size), "F")
+        for i in range(number_holes):
+            x_index = random.randint(0, size - 1)
+            y_index = random.randint(0, size - 1)
+            while (x_index == 0 and y_index == 0) or (x_index == size - 1 and y_index == size - 1):
+                x_index = random.randint(0, size - 1)
+                y_index = random.randint(0, size - 1)
+            res[x_index][y_index] = "H"
+        res[0][0] = "S"
+        res[-1][-1] = "G"
+        valid = is_valid(res)
+    return ["".join(x) for x in res]
 
 class FrozenLakeEnv(discrete.DiscreteEnv):
     """
@@ -92,9 +134,9 @@ class FrozenLakeEnv(discrete.DiscreteEnv):
 
     metadata = {"render.modes": ["human", "ansi"]}
 
-    def __init__(self, desc=None, map_name="4x4", is_slippery=True, size=4, p=0.8):
+    def __init__(self, desc=None, map_name="4x4", is_slippery=True, size=4, number_holes=2):
         if desc is None and map_name is None:
-            desc = generate_random_map(size, p)
+            desc = generate_random_map_new(size, number_holes)
         elif desc is None:
             desc = MAPS[map_name]
         self.desc = desc = np.asarray(desc, dtype="c")
