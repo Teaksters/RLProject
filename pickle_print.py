@@ -10,7 +10,7 @@ print(mean_Q)
 # plt.plot(x, mean_DQ)
 # plt.savefig("owyeah_DQ")
 # plt.show()
-STEP = 1
+STEP = 10
 
 y_Q = []
 episode_mean_Q = []

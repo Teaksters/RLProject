@@ -19,7 +19,7 @@ def run_experiment_func(pName, N, episodes, size=4, number_holes=2):
     return mean_res, mean_res_dq
 
 pName = "Q_test_cliff_walking_100N_random.p"
-q, dq = run_experiment_func(pName, 100, 500)
+q, dq = run_experiment_func(pName, 50, 20000)
 
 pickle.dump(q, open("pickle_files/" + pName, "wb" ))
 pickle.dump(dq, open("pickle_files/D" + pName, "wb" ))
