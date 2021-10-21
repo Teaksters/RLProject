@@ -23,8 +23,8 @@ def main(env=0, num_episodes=50000, epsilon=0.05, q=True, dq=False, size=4, numb
     if env_choice == 'frozenLake':
         env = FrozenLakeEnv(desc=None, map_name=None, is_slippery=True, size=size, number_holes=number_holes)
         Q = np.random.normal(0, 0.01, (env.nS, env.nA))
+        Q1 = np.random.normal(0, 0.01, (env.nS, env.nA))
         Q2 = np.random.normal(0, 0.01, (env.nS, env.nA))
-        # Q2 = np.zeros((env.nS, env.nA))
         policy = EpsilonGreedyPolicy(Q, epsilon, env.nA)
         policy2 = EpsilonGreedyPolicy(Q2, epsilon, env.nA)
         print('The generated map:')
@@ -59,7 +59,7 @@ def main(env=0, num_episodes=50000, epsilon=0.05, q=True, dq=False, size=4, numb
 
     # Decide which algorithm to run
     if dq:
-        Q1, Q2, dq_results = double_q_learning(env, policy, policy2, Q, Q2, num_episodes, s_2_idx,
+        Q1, Q2, dq_results = double_q_learning(env, policy, policy2, Q1, Q2, num_episodes, s_2_idx,
                                 discount_factor=0.9, alpha=0.5)
     if q:
         Q, q_results = q_learning(env, policy, Q, num_episodes, s_2_idx,
