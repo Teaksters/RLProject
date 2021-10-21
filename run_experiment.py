@@ -10,7 +10,7 @@ def run_experiment_func(pName, N, episodes, size=4, number_holes=2):
     all_r_dq = np.zeros([episodes])
 
     for i in range(N):
-        _, (len, res), _, _, (len_dq, res_dq) = main.main(env=2, num_episodes=episodes, epsilon=0.05, q=True, dq=True, size=size, number_holes=number_holes, max_epL=100)
+        _, (len, res), _, _, (len_dq, res_dq) = main.main(env=0, num_episodes=episodes, epsilon=0.05, q=True, dq=True, size=size, number_holes=number_holes)
         all_r += res
         all_r_dq += res_dq
 
