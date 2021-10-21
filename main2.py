@@ -16,7 +16,7 @@ import helpers
 env_opt = ['frozenLake', 'blackJack', 'cliffWalking', 'taxi']
 policy = 0
 
-def main(env=0, num_episodes=50000, epsilon=0.05, q=True, dq=False, size=4, number_holes=2, max_epL=100):
+def main(env=0, num_episodes=50000, epsilon=0.05, q=True, dq=False, size=4, number_holes=2, max_epL=float('inf')):
 
     s_2_idx = None
     env_choice = env_opt[env] # Change this to change the env
@@ -63,10 +63,10 @@ def main(env=0, num_episodes=50000, epsilon=0.05, q=True, dq=False, size=4, numb
     # Decide which algorithm to run
     if dq:
         Q1, Q2, dq_results = double_q_learning(env, policy, policy2, Q1, Q2, num_episodes, s_2_idx,
-                                discount_factor=0.9, alpha=0.5, max_epL=200)
+                                discount_factor=0.9, alpha=0.1, max_epL=100)
     if q:
         Q, q_results = q_learning(env, policy, Q, num_episodes, s_2_idx,
-                                discount_factor=0.9, alpha=0.5, max_epL=200)
+                                discount_factor=0.9, alpha=0.1, max_epL=100)
 
     if q and dq:
         return Q, q_results, Q1, Q2, dq_results
