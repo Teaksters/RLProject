@@ -27,7 +27,7 @@ for i in range(len(mean_DQ)):
         y_DQ.append(sum(episode_mean_DQ) / len(episode_mean_DQ))
         episode_mean_DQ = []
 
-x = np.arange(1, len(y_DQ) + 1) * 50
+x = np.arange(1, len(y_DQ) + 1) * 100
 plt.scatter(x, y_Q, color="r", alpha=0.5, label = "Q-learning")
 plt.scatter(x, y_DQ, color="b", alpha=0.5, label = "Double Q-learning")
 plt.legend()
