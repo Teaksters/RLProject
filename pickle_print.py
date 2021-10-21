@@ -2,8 +2,8 @@ import pickle
 import numpy as np
 import matplotlib.pyplot as plt
 
-mean_DQ = pickle.load( open("pickle_files/DFrozenLake_N100_epi10000_size8_holes1.p", "rb" ))
-mean_Q = pickle.load( open("pickle_files/FrozenLake_N100_epi10000_size8_holes1.p", "rb" ))
+mean_DQ = pickle.load( open("pickle_files/DFrozenLake_N10_epi10000_size4_holes2.p", "rb" ))
+mean_Q = pickle.load( open("pickle_files/FrozenLake_N10_epi10000_size4_holes2.p", "rb" ))
 print(mean_Q)
 
 # x = np.arange(mean_DQ.shape[0])
@@ -28,8 +28,9 @@ for i in range(len(mean_DQ)):
         episode_mean_DQ = []
 
 x = np.arange(1, len(y_DQ) + 1) * 50
-plt.scatter(x, y_Q, color="r", alpha=0.5)
-plt.scatter(x, y_DQ, color="b", alpha=0.5)
+plt.scatter(x, y_Q, color="r", alpha=0.5, label = "Q-learning")
+plt.scatter(x, y_DQ, color="b", alpha=0.5, label = "Double Q-learning")
+plt.legend()
 plt.show()
 
 # x = np.arange(0, mean_Q.shape[0], 10000)

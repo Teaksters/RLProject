@@ -38,6 +38,10 @@ def double_q_learning(env, policy1, policy2, Q1, Q2, num_episodes, s_2_idx, disc
         while done == False:
             # Sample from mean epsilon greedy policies
             mean_action_value = Q1[s] + Q2[s]
+            # action_1 = policy1.sample_action(s, dq=True)
+            # action_2 = policy2.sample_action(s, dq=True)
+            # mean_action_value = action_1+action_2
+
 
             x = random.random()
             if x > policy1.epsilon:
