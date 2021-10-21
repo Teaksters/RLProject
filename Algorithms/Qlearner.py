@@ -4,7 +4,7 @@ def tqdm(*args, **kwargs):
     return _tqdm(*args, **kwargs, mininterval=1)  # Safety, do not overflow buffer
 
 
-def q_learning(env, policy, Q, num_episodes, s_2_idx, discount_factor=1.0, alpha=0.5):
+def q_learning(env, policy, Q, num_episodes, s_2_idx, discount_factor=1.0, alpha=0.5, max_epL=float('inf')):
     """
     Q-Learning algorithm: Off-policy TD control. Finds the optimal greedy policy
     while following an epsilon-greedy policy
@@ -45,7 +45,7 @@ def q_learning(env, policy, Q, num_episodes, s_2_idx, discount_factor=1.0, alpha
 
             i += 1
             R += r
-
+            if i == max_epL: break
         stats.append((i, R))
     episode_lengths, episode_returns = zip(*stats)
     return Q, (episode_lengths, episode_returns)
