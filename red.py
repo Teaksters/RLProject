@@ -1,4 +1,4 @@
-ffrom run_experiment import run_experiment_func
+from run_experiment import run_experiment_func
 import pickle
 
 # Config A
