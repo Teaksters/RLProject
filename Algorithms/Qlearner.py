@@ -1,4 +1,5 @@
 from tqdm import tqdm as _tqdm
+import numpy as np
 
 def tqdm(*args, **kwargs):
     return _tqdm(*args, **kwargs, mininterval=1)  # Safety, do not overflow buffer
