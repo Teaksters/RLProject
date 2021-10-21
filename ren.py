@@ -3,7 +3,7 @@ import pickle
 
 # Config A
 pName           = ""
-N               = 10
+N               = 100
 episodes        = 10000
 size            = 4
 number_holes    = 1
