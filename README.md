@@ -1,7 +1,7 @@
 # RLProject
 A small research project comparing Q-learning with double Q-learning.
 
-All python files in main are used for experimentation:
+All python files hereare used for experimentation:
 
 run_cliffw.py links with main2.py
 
