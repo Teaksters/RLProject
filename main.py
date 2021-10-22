@@ -21,7 +21,7 @@ def main(env=0, num_episodes=50000, epsilon=0.05, q=True, dq=False, size=4, numb
     s_2_idx = None
     env_choice = env_opt[env] # Change this to change the env
     if env_choice == 'frozenLake':
-        env = FrozenLakeEnv(desc=None, map_name=None, is_slippery=False, size=size, number_holes=number_holes)
+        env = FrozenLakeEnv(desc=None, map_name=None, is_slippery=True, size=size, number_holes=number_holes)
         Q = np.random.normal(0, 0.01, (env.nS, env.nA))
         Q1 = np.random.normal(0, 0.01, (env.nS, env.nA))
         Q2 = np.random.normal(0, 0.01, (env.nS, env.nA))
