@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 
 mean_DQ = pickle.load( open("pickle_files/Red/DFrozenLake_noslippy_N100_epi50000_size4_holes8.p", "rb" ))
 mean_Q = pickle.load( open("pickle_files/Red/FrozenLake_noslippy_N100_epi50000_size4_holes8.p", "rb" ))
->>>>>>> 51baa7d73e0358d807471b913f92197699fdd60d
 print(mean_Q)
 
 # x = np.arange(mean_DQ.shape[0])
