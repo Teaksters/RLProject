@@ -2,8 +2,13 @@ import pickle
 import numpy as np
 import matplotlib.pyplot as plt
 
+<<<<<<< HEAD
 mean_DQ = pickle.load( open("pickle_files/DFrozenLake_N100_epi50000_size4_holes4not_slippery.p", "rb" ))
 mean_Q = pickle.load( open("pickle_files/FrozenLake_N100_epi50000_size4_holes4not_slippery.p", "rb" ))
+=======
+mean_DQ = pickle.load( open("pickle_files/DFrozenLake_noslippy_N100_epi50000_size8_holes1.p", "rb" ))
+mean_Q = pickle.load( open("pickle_files/FrozenLake_noslippy_N100_epi50000_size8_holes1.p", "rb" ))
+>>>>>>> 7fabcf70b52ceeab807414d38dbb6291ca16bc7c
 print(mean_Q)
 
 # x = np.arange(mean_DQ.shape[0])

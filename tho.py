@@ -4,11 +4,11 @@ import pickle
 # Config A
 pName           = ""
 N               = 100
-episodes        = 20000
+episodes        = 50000
 size            = 8
 number_holes    = 1
 
-pName = "FrozenLake_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_holes" + str(number_holes) + ".p"
+pName = "FrozenLake_noslippy_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_holes" + str(number_holes) + ".p"
 
 mean_res, mean_res_dq = run_experiment_func(pName, N, episodes, size, number_holes)
 pickle.dump(mean_res, open("pickle_files/" + pName, "wb" ))
@@ -20,11 +20,11 @@ print("***************")
 
 pName           = ""
 N               = 100
-episodes        = 20000
+episodes        = 50000
 size            = 8
 number_holes    = 2
 
-pName = "FrozenLake_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_holes" + str(number_holes) + ".p"
+pName = "FrozenLake_noslippy_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_holes" + str(number_holes) + ".p"
 
 mean_res, mean_res_dq = run_experiment_func(pName, N, episodes, size, number_holes)
 pickle.dump(mean_res, open("pickle_files/" + pName, "wb" ))
@@ -36,11 +36,11 @@ print("***************")
 
 pName           = ""
 N               = 100
-episodes        = 20000
+episodes        = 50000
 size            = 8
 number_holes    = 3
 
-pName = "FrozenLake_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_holes" + str(number_holes) + ".p"
+pName = "FrozenLake_noslippy_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_holes" + str(number_holes) + ".p"
 
 mean_res, mean_res_dq = run_experiment_func(pName, N, episodes, size, number_holes)
 pickle.dump(mean_res, open("pickle_files/" + pName, "wb" ))
@@ -52,11 +52,11 @@ print("***************")
 
 pName           = ""
 N               = 100
-episodes        = 20000
+episodes        = 50000
 size            = 8
 number_holes    = 4
 
-pName = "FrozenLake_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_holes" + str(number_holes) + ".p"
+pName = "FrozenLake_noslippy_N" + str(N) + "_epi" + str(episodes) + "_size" + str(size) + "_holes" + str(number_holes) + ".p"
 
 mean_res, mean_res_dq = run_experiment_func(pName, N, episodes, size, number_holes)
 pickle.dump(mean_res, open("pickle_files/" + pName, "wb" ))
