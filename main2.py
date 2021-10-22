@@ -42,9 +42,9 @@ def main(env=0, num_episodes=50000, epsilon=0.05, q=True, dq=False, size=4, numb
 
     if env_choice == 'cliffWalking':
         env = CliffWalkingEnv()
-        Q = np.random.normal(0, 0.01, (env.nS, env.nA))
-        Q1 = np.random.normal(0, 0.01, (env.nS, env.nA))
-        Q2 = np.random.normal(0, 0.01, (env.nS, env.nA))
+        Q = np.zeros((env.nS, env.nA))
+        Q1 = np.zeros((env.nS, env.nA))
+        Q2 = np.zeros((env.nS, env.nA))
         policy = EpsilonGreedyPolicy(Q, epsilon, env.nA)
         policy2 = EpsilonGreedyPolicy(Q2, epsilon, env.nA)
         print('The generated map:')
