@@ -4,7 +4,7 @@ import pickle
 # Config A
 pName           = ""
 N               = 100
-episodes        = 20000
+episodes        = 50000
 size            = 8
 number_holes    = 5
 
@@ -20,7 +20,7 @@ print("***************")
 
 pName           = ""
 N               = 100
-episodes        = 20000
+episodes        = 50000
 size            = 8
 number_holes    = 6
 
@@ -36,7 +36,7 @@ print("***************")
 
 pName           = ""
 N               = 100
-episodes        = 20000
+episodes        = 50000
 size            = 8
 number_holes    = 7
 
@@ -52,7 +52,7 @@ print("***************")
 
 pName           = ""
 N               = 100
-episodes        = 20000
+episodes        = 50000
 size            = 8
 number_holes    = 8
 

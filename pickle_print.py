@@ -2,15 +2,15 @@ import pickle
 import numpy as np
 import matplotlib.pyplot as plt
 
-mean_DQ = pickle.load( open("pickle_files/DFrozenLake_N100_epi20000_size8_holes1.p", "rb" ))
-mean_Q = pickle.load( open("pickle_files/FrozenLake_N100_epi20000_size8_holes1.p", "rb" ))
+mean_DQ = pickle.load( open("pickle_files/DFrozenLake_N100_epi20000_size8_holes5.p", "rb" ))
+mean_Q = pickle.load( open("pickle_files/FrozenLake_N100_epi20000_size8_holes5.p", "rb" ))
 print(mean_Q)
 
 # x = np.arange(mean_DQ.shape[0])
 # plt.plot(x, mean_DQ)
 # plt.savefig("owyeah_DQ")
 # plt.show()
-STEP = 10
+STEP = 20
 
 y_Q = []
 episode_mean_Q = []
