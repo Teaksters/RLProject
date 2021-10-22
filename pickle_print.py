@@ -2,15 +2,15 @@ import pickle
 import numpy as np
 import matplotlib.pyplot as plt
 
-mean_DQ = pickle.load( open("pickle_files/DFrozenLake_N100_epi20000_size8_holes1.p", "rb" ))
-mean_Q = pickle.load( open("pickle_files/FrozenLake_N100_epi20000_size8_holes1.p", "rb" ))
+mean_DQ = pickle.load( open("pickle_files/DFrozenLake_N100_epi50000_size4_holes4not_slippery.p", "rb" ))
+mean_Q = pickle.load( open("pickle_files/FrozenLake_N100_epi50000_size4_holes4not_slippery.p", "rb" ))
 print(mean_Q)
 
 # x = np.arange(mean_DQ.shape[0])
 # plt.plot(x, mean_DQ)
 # plt.savefig("owyeah_DQ")
 # plt.show()
-STEP = 10
+STEP = 100
 
 y_Q = []
 episode_mean_Q = []
@@ -28,9 +28,9 @@ for i in range(len(mean_DQ)):
         y_DQ.append(sum(episode_mean_DQ) / len(episode_mean_DQ))
         episode_mean_DQ = []
 
-print(len(y_Q))
+# print(len(y_Q))
 x = np.arange(1, len(y_DQ) + 1) * STEP
-print(x, y_Q)
+# print(x, y_Q)
 plt.scatter(x, y_Q, color="r", alpha=0.5, label = "Q-learning")
 plt.scatter(x, y_DQ, color="b", alpha=0.5, label = "Double Q-learning")
 plt.legend()
